@@ -1,14 +1,5 @@
 # shopping_cart.py
 
-# Import CSV data
-
-# import os
-
-# My_Filepath = os.path.join(os.path.dirname(__file__), "..", "shopping_cart.csv")
-# My_Filepath = os.path.join(os.path.dirname(__file__), "..", "data", "shopping_cart.csv")
-
-# os.path.dirname(__file__)
-
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -58,6 +49,7 @@ while True:
     else:
         selected_ids.append(selected_id)
   
+# Receipt Creation Process
 print("--------------------------------------")
 print("PURE FOODS MARKET")
 print("WWW.PUREFOODSMARKET.COM")
@@ -68,19 +60,19 @@ e = datetime.datetime.now()
 print (e.strftime("%m/%d/%Y %I:%M %p"))
 print("--------------------------------------")
 
-
+print("SELECTED PRODUCTS")
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     for p in matching_products:
         price_usd = p["price"]
-        price_usd = "${0:.2f}".format(price_usd)
+        price_usd = "${0:.2f}".format(price_usd)    
     subtotal_price = subtotal_price + matching_product["price"]
     
     subtotal_price_usd = subtotal_price
     subtotal_price_usd = "${0:.2f}".format(subtotal_price_usd)
 
-    print("SELECTED PRODUCTS: " + matching_product["name"] + " " + price_usd)
+    print(matching_product["name"] + " " + price_usd)
 
 print("--------------------------------------")
 print("SUBTOTAL: " + str(subtotal_price_usd))
@@ -93,17 +85,15 @@ total_price = tax_owed + subtotal_price
 total_price_usd = total_price
 total_price_usd = "${0:.2f}".format(total_price_usd)
 print("TOTAL PRICE: " + str(total_price_usd))
+print("We Cannot Wait To See You Again! Happy Cooking")
 
 
 
-
-
-# Output Receipt Requirements
-# A grocery store name of your choice
-# A grocery store phone number and/or website URL and/or address of choice
-# The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-# The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-# The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
-# The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+# A grocery store name of your choice: DONE
+# A grocery store phone number and/or website URL and/or address of choice: DONE
+# The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM): DONE
+# The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.): DONE
+# The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices: DONE
+# The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax): DONE
 #The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-# A friendly message thanking the customer and/or encouraging the customer to shop again
+# A friendly message thanking the customer and/or encouraging the customer to shop again: DONE
