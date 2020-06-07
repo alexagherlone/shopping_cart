@@ -48,17 +48,35 @@ def to_usd(my_price):
 # User Input/Capture Process
 
 total_price = 0
+selected_ids = []
 
 while True:
-    selected_ID = input("Please input a product identifier:") #< output = str
+    selected_id = input("Please input a product identifier:") #< output = str
     #< if Done
-    if selected_ID == "DONE":
+    if selected_id == "DONE":
         break 
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(selected_ID)]
-        matching_product = matching_products [0]
-        total_price = total_price + matching_product ["price"]
-        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+        selected_ids.append(selected_id)
+  
+print("--------------------------------------")
+print("PURE FOODS MARKET")
+print("WWW.PUREFOODSMARKET.COM")
+print("--------------------------------------")
+print("CHECKOUT AT:")
+import datetime
+e = datetime.datetime.now()
+print (e.strftime("%m/%d/%Y %I:%M %p"))
+
+
+print("--------------------------------------")
+
+
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product ["price"]    
+    print("SELECTED PRODUCTS: " + matching_product["name"] + " " + str(matching_product["price"]))  
+
 
 print("TOTAL PRICE: " + str(total_price))
 # format as USD
