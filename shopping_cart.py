@@ -46,10 +46,18 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 # User Input/Capture Process
-selected_ID = input("Please input a product identifier:") #< output = str
-matching_products = [p for p in products if str(p["id"]) == str(selected_ID)]
-matching_product = matching_products [0]
-print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+
+while True:
+    selected_ID = input("Please input a product identifier:") #< output = str
+    #< if Done
+    if selected_ID == "DONE":
+        break 
+    else:
+        matching_products = [p for p in products if str(p["id"]) == str(selected_ID)]
+        matching_product = matching_products [0]
+        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+
+
 
 
 
