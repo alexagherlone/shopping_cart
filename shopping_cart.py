@@ -47,7 +47,7 @@ def to_usd(my_price):
 
 # User Input/Capture Process
 
-total_price = 0
+subtotal_price = 0
 selected_ids = []
 
 while True:
@@ -66,20 +66,34 @@ print("CHECKOUT AT:")
 import datetime
 e = datetime.datetime.now()
 print (e.strftime("%m/%d/%Y %I:%M %p"))
-
-
 print("--------------------------------------")
 
 
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_product ["price"]    
-    print("SELECTED PRODUCTS: " + matching_product["name"] + " " + str(matching_product["price"]))  
+    for p in matching_products:
+        price_usd = p["price"]
+        price_usd = "${0:.2f}".format(price_usd)
+    subtotal_price = subtotal_price + matching_product["price"]
+    
+    subtotal_price_usd = subtotal_price
+    subtotal_price_usd = "${0:.2f}".format(subtotal_price_usd)
 
+    print("SELECTED PRODUCTS: " + matching_product["name"] + " " + price_usd)
 
-print("TOTAL PRICE: " + str(total_price))
-# format as USD
+print("--------------------------------------")
+print("SUBTOTAL: " + str(subtotal_price_usd))
+
+tax_owed = int(subtotal_price) * .0875
+tax_owed_usd = tax_owed
+tax_owed_usd = "${0:.2f}".format(tax_owed_usd)
+print("TAX: " + str(tax_owed_usd))
+total_price = tax_owed + subtotal_price
+total_price_usd = total_price
+total_price_usd = "${0:.2f}".format(total_price_usd)
+print("TOTAL PRICE: " + str(total_price_usd))
+
 
 
 
